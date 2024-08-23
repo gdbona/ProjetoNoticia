@@ -1,0 +1,24 @@
+﻿@model ProjetoNoticiaV1.DTO.NoticiaDTO
+ 
+@Html.HiddenFor(m => m.Id)
+<div id="edit">
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            getEdit($('#Id').val());
+            tagDisponivel();
+            function getEdit(idEdit) {
+                 
+                $.ajax({
+                    async: true,
+                    type: 'GET',
+                    url: ' @Url.Action("Edit", "Noticia")?id=' + idEdit + '',
+                    success: function (response) {
+                        $("#edit").html(response);
+                    }
+                });
+            }
+        });
+    </script>
+}

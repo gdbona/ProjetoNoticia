@@ -1,0 +1,39 @@
+﻿ @model IEnumerable<ProjetoNoticiaV1.DTO.NoticiaDTO>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Texto)
+            </th>
+            <th>
+                Tags
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Texto)
+                </td>
+                <td>
+                    @foreach (var tag in item.NoticiaTags)
+                    {
+                        <div>
+                            @Html.DisplayFor(modelItem => tag.Descricao)
+                        </div>
+
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

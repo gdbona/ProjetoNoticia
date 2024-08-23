@@ -1,0 +1,7 @@
+﻿ @model ProjetoNoticiaV1.DTO.TagDTO
+<div class="row " style="margin-top: 15px;">
+    @Html.HiddenFor(m=> m.Id)
+    @Html.HiddenFor(m => m.Descricao)
+    <input class="btn btn-secondary" type="button" id="btnAdd" onclick="AdicionaOuRemoveTagNoticia(@Model.Id)" value="@Model.Descricao" />
+</div>
+ 

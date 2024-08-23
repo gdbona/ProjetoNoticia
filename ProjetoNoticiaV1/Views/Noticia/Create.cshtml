@@ -1,0 +1,69 @@
+﻿@model ProjetoNoticiaV1.DTO.NoticiaDTO
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Noticia</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create" id="formNoticia">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @Html.HiddenFor(m => m.tagId)
+
+            <div class="col-md-12" style="display:flex">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Titulo" class="control-label"></label>
+                        <input asp-for="Titulo" class="form-control" />
+                        <span asp-validation-for="Titulo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Texto" class="control-label"></label>
+                        <textarea asp-for="Texto" class="form-control"></textarea>
+                        <span asp-validation-for="Texto" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6" style="display:flex">
+                    <div class="col-md-5" style="margin-left: 30px;">
+                        <p>Adicionada</p>
+                        <div id="tagAdicionada">
+                            @Html.EditorFor(Model => Model.NoticiaTags)
+                        </div>
+                    </div>
+                    <div class="col-md-5" style="margin-left: 30px;">
+                        <p>Disponivel</p>
+                        <div id="tagDisponivel">
+                            @Html.EditorFor(Model => Model.NoticiaTagsDisponivel)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            tagDisponivel();
+        });
+
+    </script>
+}
